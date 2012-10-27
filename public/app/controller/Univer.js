@@ -23,7 +23,14 @@ Ext.define('Sched.controller.Univer', {
             univerStore = this.getUniverStore();
 
         VK.init(function (obj) {
-            console.log(obj)
+            var parts = document.location.search.substr(1).split("&"),
+                vars = {};
+
+            for (var i=0; i<parts.length; i++) {
+                var part = parts[i].split('=');
+                vars[part[0]] = part[1];
+            }
+            console.log(vars['viewer_id']);
         });
 
         univerStore.load({
