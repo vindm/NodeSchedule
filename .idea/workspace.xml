@@ -36,9 +36,9 @@
       <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="66" selection-start="282" selection-end="282" vertical-scroll-proportion="0.28481013">
+            <state line="12" column="63" selection-start="279" selection-end="279" vertical-scroll-proportion="0.28481013">
               <folding>
-                <element signature="e#1492#2427#0" expanded="false" />
+                <element signature="e#1489#2424#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -576,9 +576,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="66" selection-start="282" selection-end="282" vertical-scroll-proportion="0.28481013">
+        <state line="12" column="63" selection-start="279" selection-end="279" vertical-scroll-proportion="0.28481013">
           <folding>
-            <element signature="e#1492#2427#0" expanded="false" />
+            <element signature="e#1489#2424#0" expanded="false" />
           </folding>
         </state>
       </provider>
