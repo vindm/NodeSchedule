@@ -36,9 +36,9 @@
       <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="100" selection-start="316" selection-end="316" vertical-scroll-proportion="0.27439025">
+            <state line="12" column="88" selection-start="304" selection-end="304" vertical-scroll-proportion="0.2690583">
               <folding>
-                <element signature="e#1484#2419#0" expanded="false" />
+                <element signature="e#1472#2407#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -501,7 +501,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/model/univer/Group.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="3" selection-start="206" selection-end="206" vertical-scroll-proportion="0.0" />
+        <state line="8" column="3" selection-start="206" selection-end="206" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/model/univer/Univer.js">
@@ -576,9 +578,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="100" selection-start="316" selection-end="316" vertical-scroll-proportion="0.27439025">
+        <state line="12" column="88" selection-start="304" selection-end="304" vertical-scroll-proportion="0.2690583">
           <folding>
-            <element signature="e#1484#2419#0" expanded="false" />
+            <element signature="e#1472#2407#0" expanded="false" />
           </folding>
         </state>
       </provider>
