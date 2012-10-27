@@ -30,7 +30,7 @@ Ext.define('Sched.controller.Univer', {
                 var part = parts[i].split('=');
                 vars[part[0]] = part[1];
             }
-            console.log(vars['viewer_id']);
+            console.log(vars);
         });
 
         univerStore.load({
