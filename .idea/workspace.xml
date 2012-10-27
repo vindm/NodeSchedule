@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d4311d6-551b-415f-afce-db6907b8ad9b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/controller/Univer.js" afterPath="$PROJECT_DIR$/public/app/controller/Univer.js" />
     </list>
     <ignored path="NodeSchedule.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,10 +33,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="6" selection-start="280" selection-end="280" vertical-scroll-proportion="0.17937219">
+            <state line="8" column="6" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#360#878#0" expanded="false" />
                 <element signature="e#1025#1054#0" expanded="false" />
@@ -104,10 +104,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Univer.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Univer.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/app/controller/Univer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="27" selection-start="630" selection-end="630" vertical-scroll-proportion="0.0">
+            <state line="25" column="27" selection-start="633" selection-end="633" vertical-scroll-proportion="0.35874438">
               <folding />
             </state>
           </provider>
@@ -149,8 +149,8 @@
         <option value="$PROJECT_DIR$/Procfyle" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/public/app/controller/Univer.js" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/public/app/controller/Univer.js" />
       </list>
     </option>
   </component>
@@ -572,13 +572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/controller/Univer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="27" selection-start="630" selection-end="630" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/view/Univer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="30" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0">
@@ -595,7 +588,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="6" selection-start="280" selection-end="280" vertical-scroll-proportion="0.17937219">
+        <state line="8" column="6" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#360#878#0" expanded="false" />
             <element signature="e#1025#1054#0" expanded="false" />
@@ -605,6 +598,13 @@
             <element signature="e#1354#1415#0" expanded="false" />
             <element signature="e#1466#2003#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/controller/Univer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="27" selection-start="633" selection-end="633" vertical-scroll-proportion="0.35874438">
+          <folding />
         </state>
       </provider>
     </entry>

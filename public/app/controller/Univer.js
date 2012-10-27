@@ -22,8 +22,8 @@ Ext.define('Sched.controller.Univer', {
         var me = this,
             univerStore = this.getUniverStore();
 
-        VK.init(function () {
-            console.log('vk')
+        VK.init(function (obj) {
+            console.log(obj)
         });
 
         univerStore.load({
