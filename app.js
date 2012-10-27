@@ -10,7 +10,7 @@ var express = require('express'),
     mongoose = require('mongoose');
 
 var app = express(),
-    db = mongoose.createConnection('mongodb://heroku:2415868644@alex.mongohq.com:10014/app8775015', 'test');
+    db = mongoose.createConnection('mongodb://heroku:2415868644@alex.mongohq.com:10014', 'app8775015');
 
 
 app.configure(function () {
