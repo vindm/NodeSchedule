@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d4311d6-551b-415f-afce-db6907b8ad9b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
     </list>
     <ignored path="NodeSchedule.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,19 +33,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="34" selection-start="2723" selection-end="2723" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="12" column="66" selection-start="282" selection-end="282" vertical-scroll-proportion="0.28481013">
+              <folding>
+                <element signature="e#1492#2427#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="22" selection-start="299" selection-end="299" vertical-scroll-proportion="0.3255814">
+            <state line="14" column="22" selection-start="299" selection-end="299" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -131,9 +133,9 @@
         <option value="$PROJECT_DIR$/public/app/view/Univer.js" />
         <option value="$PROJECT_DIR$/public/app/controller/Univer.js" />
         <option value="$PROJECT_DIR$/public/app/model/univer/Kurs.js" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/Procfyle" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
   </component>
@@ -487,7 +489,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/model/schedule/Schedule.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="3" selection-start="138" selection-end="138" vertical-scroll-proportion="0.0" />
+        <state line="4" column="3" selection-start="138" selection-end="138" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/controller/Schedule.js">
@@ -502,7 +506,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/model/univer/Univer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="26" selection-start="132" selection-end="144" vertical-scroll-proportion="0.089686096" />
+        <state line="4" column="26" selection-start="132" selection-end="144" vertical-scroll-proportion="0.089686096">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app.js">
@@ -549,13 +555,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="34" selection-start="2723" selection-end="2723" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/store/Univer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="23" selection-start="163" selection-end="163" vertical-scroll-proportion="0.0">
@@ -570,8 +569,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="22" selection-start="299" selection-end="299" vertical-scroll-proportion="0.3255814">
+        <state line="14" column="22" selection-start="299" selection-end="299" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="66" selection-start="282" selection-end="282" vertical-scroll-proportion="0.28481013">
+          <folding>
+            <element signature="e#1492#2427#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

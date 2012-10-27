@@ -10,7 +10,7 @@ var express = require('express'),
     mongoose = require('mongoose');
 
 var app = express(),
-    db = mongoose.createConnection('localhost', 'test');
+    db = mongoose.createConnection('mongodb://vindm:1dont2even3try@alex.mongohq.com:10014/app8775015', 'test');
 
 
 app.configure(function () {
