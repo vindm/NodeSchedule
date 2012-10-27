@@ -1,8 +1,3 @@
-
-/**
- * Module dependencies.
- */
-
 var express = require('express'),
     routes = require('./routes'),
     http = require('http'),
@@ -52,48 +47,51 @@ var groupSchema = new Schema({
     });
 
 var Univer = db.model('Univer', univerSchema);
-Univer.remove({}, function(err){var engec = new Univer({
-    title: "ИНЖЭКОН",
-    facultets: [{
-        title: 'фисэу',
-        kafedras: [{
-            title: 'прикладная информатика',
-            kursy: [{
-                num: 4,
-                groups: [{
-                    title: '371'
-                }]
-            }, {
-                num: 5,
-                groups: [{
-                    title: '372'
-                }]
-            }]
-        }, {
-            title: 'информатика2',
-            kursy: [{
-                num: 3,
-                groups: [{
-                    title: '371'
-                }]
-            }]
-        }]
-    }, {
-        title: 'гумфак',
-        kafedras: [{
-            title: 'aaaaaaaa',
-            kursy: [{
-                num: 5,
-                groups: [{
-                    title: '371'
-                }]
-            }]
-        }]
-    }]
-});
-    engec.save(function (err) {
-        console.log('lol '+err)
-    });});
+/*
+ Univer.remove({}, function(err){var engec = new Univer({
+ title: "ИНЖЭКОН",
+ facultets: [{
+ title: 'фисэу',
+ kafedras: [{
+ title: 'прикладная информатика',
+ kursy: [{
+ num: 4,
+ groups: [{
+ title: '371'
+ }]
+ }, {
+ num: 5,
+ groups: [{
+ title: '372'
+ }]
+ }]
+ }, {
+ title: 'информатика2',
+ kursy: [{
+ num: 3,
+ groups: [{
+ title: '371'
+ }]
+ }]
+ }]
+ }, {
+ title: 'гумфак',
+ kafedras: [{
+ title: 'aaaaaaaa',
+ kursy: [{
+ num: 5,
+ groups: [{
+ title: '371'
+ }]
+ }]
+ }]
+ }]
+ });
+ engec.save(function (err) {
+ console.log('lol '+err)
+ });});
+ */
+
 
 app.get('/', routes.index);
 app.get('/univer', function (req, res) {
