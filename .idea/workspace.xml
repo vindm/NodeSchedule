@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d4311d6-551b-415f-afce-db6907b8ad9b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/controller/Univer.js" afterPath="$PROJECT_DIR$/public/app/controller/Univer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
     </list>
     <ignored path="NodeSchedule.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,15 +36,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="0" selection-start="1407" selection-end="1407" vertical-scroll-proportion="0.4618834">
+            <state line="7" column="6" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#302#820#0" expanded="false" />
-                <element signature="e#864#904#0" expanded="false" />
-                <element signature="e#1407#1944#0" expanded="false" />
+                <element signature="e#360#878#0" expanded="false" />
+                <element signature="e#1025#1054#0" expanded="false" />
+                <element signature="e#1085#1143#0" expanded="false" />
+                <element signature="e#1173#1231#0" expanded="false" />
+                <element signature="e#1261#1321#0" expanded="false" />
+                <element signature="e#1354#1415#0" expanded="false" />
+                <element signature="e#1466#2003#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="90" selection-start="470" selection-end="470" vertical-scroll-proportion="-8.125">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -55,10 +71,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Univer.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Univer.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/app/store/Univer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="23" selection-start="163" selection-end="163" vertical-scroll-proportion="0.0">
+            <state line="5" column="23" selection-start="163" selection-end="163" vertical-scroll-proportion="0.11210762">
               <folding />
             </state>
           </provider>
@@ -94,7 +110,7 @@
       <file leaf-file-name="Univer.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/controller/Univer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="21" selection-start="922" selection-end="922" vertical-scroll-proportion="0.0">
+            <state line="25" column="27" selection-start="630" selection-end="630" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -122,7 +138,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/public/app/controller/Groups.js" />
         <option value="$PROJECT_DIR$/public/app/view/Groups.js" />
         <option value="$PROJECT_DIR$/public/app/model/univer/Group.js" />
         <option value="$PROJECT_DIR$/public/app/model/schedule/Schedule.js" />
@@ -133,10 +148,11 @@
         <option value="$PROJECT_DIR$/public/app/model/univer/Facultet.js" />
         <option value="$PROJECT_DIR$/public/app/model/univer/Kafedra.js" />
         <option value="$PROJECT_DIR$/public/app/view/Univer.js" />
-        <option value="$PROJECT_DIR$/public/app/controller/Univer.js" />
         <option value="$PROJECT_DIR$/public/app/model/univer/Kurs.js" />
         <option value="$PROJECT_DIR$/Procfyle" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/public/app/controller/Univer.js" />
         <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
@@ -479,11 +495,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="25" selection-start="295" selection-end="295" vertical-scroll-proportion="0.20579268" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="17" selection-start="80" selection-end="80" vertical-scroll-proportion="0.12987013" />
@@ -531,13 +542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/view/Univer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="30" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/model/univer/Facultet.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="15" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0">
@@ -545,23 +549,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/controller/Univer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="21" selection-start="922" selection-end="922" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/model/univer/Kurs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="28" selection-start="98" selection-end="98" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/store/Univer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="23" selection-start="163" selection-end="163" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -578,14 +568,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="90" selection-start="470" selection-end="470" vertical-scroll-proportion="-8.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/controller/Univer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="27" selection-start="630" selection-end="630" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="1407" selection-end="1407" vertical-scroll-proportion="0.4618834">
+        <state line="7" column="6" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#302#820#0" expanded="false" />
-            <element signature="e#864#904#0" expanded="false" />
-            <element signature="e#1407#1944#0" expanded="false" />
+            <element signature="e#360#878#0" expanded="false" />
+            <element signature="e#1025#1054#0" expanded="false" />
+            <element signature="e#1085#1143#0" expanded="false" />
+            <element signature="e#1173#1231#0" expanded="false" />
+            <element signature="e#1261#1321#0" expanded="false" />
+            <element signature="e#1354#1415#0" expanded="false" />
+            <element signature="e#1466#2003#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/view/Univer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="30" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/store/Univer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="23" selection-start="163" selection-end="163" vertical-scroll-proportion="0.11210762">
+          <folding />
         </state>
       </provider>
     </entry>

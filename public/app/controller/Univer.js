@@ -21,6 +21,11 @@ Ext.define('Sched.controller.Univer', {
     onLaunch: function () {
         var me = this,
             univerStore = this.getUniverStore();
+
+        VK.init(function () {
+            console.log('vk')
+        });
+
         univerStore.load({
             callback: me.onUniverDataLoad,
             scope: me

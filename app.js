@@ -5,8 +5,8 @@ var express = require('express'),
     mongoose = require('mongoose');
 
 var app = express(),
-    db = mongoose.connect('mongodb://heroku:2415868644@alex.mongohq.com:10014/app8775015');
-
+    //db = mongoose.connect('mongodb://heroku:2415868644@alex.mongohq.com:10014/app8775015');
+    db = mongoose.createConnection('localhost', 'test');
 
 app.configure(function () {
     app.set('port', process.env.PORT || 3000);
@@ -24,6 +24,7 @@ app.configure(function () {
 });
 app.configure('development', function () {
     app.use(express.errorHandler());
+
 });
 var Schema = mongoose.Schema;
 var groupSchema = new Schema({
