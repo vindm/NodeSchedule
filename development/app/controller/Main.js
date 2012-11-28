@@ -14,7 +14,7 @@ Ext.define('Sched.controller.Main', {
             model.load(1, {
                 scope: this,
                 callback: function(record, operation) {
-                    if ( record ) {
+                    if ( !record ) {
                         me.getFromVK();
                     } else {
                         console.log(record)
