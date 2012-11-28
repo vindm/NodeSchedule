@@ -6105,7 +6105,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/resources/theme/manifest.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/resources/theme/render.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/resources/theme/shortcuts.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/development/app/controller/Main.js" afterPath="$PROJECT_DIR$/development/app/controller/Main.js" />
     </list>
     <ignored path="NodeSchedule.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -6165,7 +6164,7 @@
       <file leaf-file-name="Main.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/development/app/controller/Main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="30" selection-start="2778" selection-end="2778" vertical-scroll-proportion="1.969697">
+            <state line="10" column="22" selection-start="303" selection-end="303" vertical-scroll-proportion="0.21645021">
               <folding />
             </state>
           </provider>
@@ -6305,6 +6304,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sched" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="production" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeSchedule" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeSchedule" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="development" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -6427,13 +6452,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="524" y="24" width="1078" height="877" extended-state="4" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21539961" sideWeight="0.32686982" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21539961" sideWeight="0.6634349" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21539961" sideWeight="0.6634349" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
@@ -6554,7 +6579,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/development/app/controller/Main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="30" selection-start="2778" selection-end="2778" vertical-scroll-proportion="1.969697">
+        <state line="10" column="22" selection-start="303" selection-end="303" vertical-scroll-proportion="0.21645021">
           <folding />
         </state>
       </provider>
