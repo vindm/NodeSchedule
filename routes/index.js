@@ -4,5 +4,7 @@
  */
 
 exports.index = function(req, res){
-  res.redirect('/index.html');
+    var q = req.query,
+        uId = q.viewer_id;
+    res.redirect('/index.html?user=' + uId);
 };
