@@ -49,7 +49,7 @@ Ext.define('Sched.view.filter.Form', {
                     var record = this.valueModels[0],
                         next = this.nextSibling();
 
-                    next.clearValue();
+
                     if ( !record ) return;
 
                     next.bindStore( record.facultets() );
@@ -64,7 +64,6 @@ Ext.define('Sched.view.filter.Form', {
                     var record = this.valueModels[0],
                         next = this.nextSibling();
 
-                    next.clearValue();
                     if ( !record ) return;
 
                     next.bindStore( record.kafedras() );
