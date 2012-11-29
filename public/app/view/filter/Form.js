@@ -39,9 +39,8 @@ Ext.define('Sched.view.filter.Form', {
                 store: 'Univers',
                 displayField: 'title',
                 valueField: '_id',
-                onChange: function() {
-                    console.log(this)
-                    var record = this.valueModels[0],
+                onChange: function(val) {
+                    var record = this.store.getById(val),
                         next = this.nextSibling();
 
                     console.log(record.facultets())
