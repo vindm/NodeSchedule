@@ -24,7 +24,8 @@ app.configure(function () {
 app.configure('development', function () {
     app.use(express.errorHandler());
     //app.use(express.static(path.join(__dirname, '')));
-    app.use(express.static(path.join(__dirname, 'public/production')));
+    //app.use(express.static(path.join(__dirname, 'public/production')));
+    app.use(express.static(path.join(__dirname, 'public')));
 });
 
 var models = require('./models/Schedule').models(db),

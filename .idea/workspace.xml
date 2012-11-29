@@ -2729,6 +2729,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/resources/images/window/window-default-sides.gif" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/resources/sass/config.rb" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/resources/sass/my-ext-theme.scss" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/view/filter/Form.js" afterPath="$PROJECT_DIR$/public/app/view/filter/Form.js" />
     </list>
     <ignored path="NodeSchedule.iws" />
@@ -2761,17 +2762,17 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="32" selection-start="917" selection-end="917" vertical-scroll-proportion="0.0">
+            <state line="26" column="6" selection-start="891" selection-end="891" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#1153#5342#0" expanded="false" />
-                <element signature="e#4029#5340#0" expanded="false" />
-                <element signature="e#5428#5601#0" expanded="false" />
-                <element signature="e#5643#5867#0" expanded="false" />
-                <element signature="e#5910#6134#0" expanded="false" />
-                <element signature="e#6177#6405#0" expanded="false" />
-                <element signature="e#6452#7068#0" expanded="false" />
-                <element signature="e#7111#7771#0" expanded="false" />
-                <element signature="e#7817#8396#0" expanded="false" />
+                <element signature="e#1216#5405#0" expanded="false" />
+                <element signature="e#4092#5403#0" expanded="false" />
+                <element signature="e#5491#5664#0" expanded="false" />
+                <element signature="e#5706#5930#0" expanded="false" />
+                <element signature="e#5973#6197#0" expanded="false" />
+                <element signature="e#6240#6468#0" expanded="false" />
+                <element signature="e#6515#7131#0" expanded="false" />
+                <element signature="e#7174#7834#0" expanded="false" />
+                <element signature="e#7880#8459#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -2786,10 +2787,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Main.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/app/controller/Main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="0" selection-start="1249" selection-end="1249" vertical-scroll-proportion="0.0">
+            <state line="16" column="26" selection-start="533" selection-end="533" vertical-scroll-proportion="0.3468208">
               <folding />
             </state>
           </provider>
@@ -2799,15 +2800,18 @@
         <entry file="file://$PROJECT_DIR$/public/app/controller/Filter.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
+              <folding>
+                <element signature="e#1361#1574#0" expanded="false" />
+                <element signature="e#1614#1797#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Form.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Form.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/view/filter/Form.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="64" selection-start="2212" selection-end="2212" vertical-scroll-proportion="0.86580086">
+            <state line="41" column="41" selection-start="989" selection-end="989" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -2826,7 +2830,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/public/app/view/lesson/form/Dates.js" />
         <option value="$PROJECT_DIR$/public/ext/src/picker/Date.js" />
         <option value="$PROJECT_DIR$/public/app/view/lesson/DatesPicker.js" />
         <option value="$PROJECT_DIR$/public/app/view/lesson/DatePicker.js" />
@@ -2842,14 +2845,15 @@
         <option value="$PROJECT_DIR$/development/.sencha/workspace/sencha.cfg" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/public/app/view/filter/Form.js" />
+        <option value="$PROJECT_DIR$/public/app/controller/Main.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="524" />
+    <option name="x" value="522" />
     <option name="y" value="24" />
     <option name="width" value="1078" />
-    <option name="height" value="877" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -2893,6 +2897,86 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="NodeSchedule" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeSchedule" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeSchedule" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeSchedule" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeSchedule" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeSchedule" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeSchedule" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeSchedule" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeSchedule" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="univer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2991,14 +3075,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="524" y="24" width="1078" height="877" extended-state="4" />
+    <frame x="522" y="24" width="1078" height="876" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21539961" sideWeight="0.32686982" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21539961" sideWeight="0.32732317" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21539961" sideWeight="0.6634349" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21539961" sideWeight="0.6629681" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
@@ -3107,40 +3191,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
+    <entry file="file://$PROJECT_DIR$/public/app/controller/Filter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="32" selection-start="917" selection-end="917" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#1153#5342#0" expanded="false" />
-            <element signature="e#4029#5340#0" expanded="false" />
-            <element signature="e#5428#5601#0" expanded="false" />
-            <element signature="e#5643#5867#0" expanded="false" />
-            <element signature="e#5910#6134#0" expanded="false" />
-            <element signature="e#6177#6405#0" expanded="false" />
-            <element signature="e#6452#7068#0" expanded="false" />
-            <element signature="e#7111#7771#0" expanded="false" />
-            <element signature="e#7817#8396#0" expanded="false" />
+            <element signature="e#1361#1574#0" expanded="false" />
+            <element signature="e#1614#1797#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/controller/Main.js">
+    <entry file="file://$PROJECT_DIR$/public/app/model/univer/Facultet.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="1249" selection-end="1249" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/controller/Filter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="4" column="13" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0867052">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/view/filter/Form.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="64" selection-start="2212" selection-end="2212" vertical-scroll-proportion="0.86580086">
+        <state line="41" column="41" selection-start="989" selection-end="989" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="6" selection-start="891" selection-end="891" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1216#5405#0" expanded="false" />
+            <element signature="e#4092#5403#0" expanded="false" />
+            <element signature="e#5491#5664#0" expanded="false" />
+            <element signature="e#5706#5930#0" expanded="false" />
+            <element signature="e#5973#6197#0" expanded="false" />
+            <element signature="e#6240#6468#0" expanded="false" />
+            <element signature="e#6515#7131#0" expanded="false" />
+            <element signature="e#7174#7834#0" expanded="false" />
+            <element signature="e#7880#8459#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/controller/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="26" selection-start="533" selection-end="533" vertical-scroll-proportion="0.3468208">
           <folding />
         </state>
       </provider>
