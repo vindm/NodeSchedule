@@ -48,10 +48,10 @@ Ext.define('Sched.view.filter.Form', {
                     console.log('univer')
                     var record = this.valueModels[0],
                         next = this.nextSibling();
-                    console.log(val)
-
-                    if ( !record ) return;
+                    console.log(this)
                     console.log(record)
+                    if ( !record ) return;
+
                     next.bindStore( record.facultets() );
                     this.up('groups').fireEvent('univerChanged', record);
                 }

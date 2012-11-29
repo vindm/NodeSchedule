@@ -2729,6 +2729,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/resources/images/window/window-default-sides.gif" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/resources/sass/config.rb" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/resources/sass/my-ext-theme.scss" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/controller/Filter.js" afterPath="$PROJECT_DIR$/public/app/controller/Filter.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/view/filter/Form.js" afterPath="$PROJECT_DIR$/public/app/view/filter/Form.js" />
     </list>
     <ignored path="NodeSchedule.iws" />
@@ -2782,7 +2783,7 @@
       <file leaf-file-name="Filter.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/controller/Filter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="92" column="71" selection-start="2703" selection-end="2703" vertical-scroll-proportion="0.0">
+            <state line="92" column="11" selection-start="2643" selection-end="2643" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#1348#1561#0" expanded="false" />
                 <element signature="e#1601#1784#0" expanded="false" />
@@ -2796,14 +2797,14 @@
       <file leaf-file-name="Form.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/app/view/filter/Form.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="35" selection-start="1310" selection-end="1310" vertical-scroll-proportion="0.27439025">
+            <state line="51" column="20" selection-start="1333" selection-end="1352" vertical-scroll-proportion="0.2972561">
               <folding>
                 <element signature="e#721#909#0" expanded="false" />
-                <element signature="e#2647#2778#0" expanded="false" />
-                <element signature="e#2803#2957#0" expanded="false" />
-                <element signature="e#3157#3530#0" expanded="false" />
-                <element signature="e#4314#4434#0" expanded="false" />
-                <element signature="e#4458#5068#0" expanded="false" />
+                <element signature="e#2648#2779#0" expanded="false" />
+                <element signature="e#2804#2958#0" expanded="false" />
+                <element signature="e#3158#3531#0" expanded="false" />
+                <element signature="e#4315#4435#0" expanded="false" />
+                <element signature="e#4459#5069#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -2844,8 +2845,8 @@
         <option value="$PROJECT_DIR$/development/.sencha/workspace/sencha.cfg" />
         <option value="$PROJECT_DIR$/public/app/controller/Main.js" />
         <option value="$PROJECT_DIR$/public/app/model/User.js" />
-        <option value="$PROJECT_DIR$/public/app/controller/Filter.js" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/public/app/controller/Filter.js" />
         <option value="$PROJECT_DIR$/public/app/view/filter/Form.js" />
       </list>
     </option>
@@ -3199,11 +3200,11 @@
         <state line="62" column="0" selection-start="1731" selection-end="1731" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#721#909#0" expanded="false" />
-            <element signature="e#2647#2778#0" expanded="false" />
-            <element signature="e#2803#2957#0" expanded="false" />
-            <element signature="e#3157#3530#0" expanded="false" />
-            <element signature="e#4314#4434#0" expanded="false" />
-            <element signature="e#4458#5068#0" expanded="false" />
+            <element signature="e#2648#2779#0" expanded="false" />
+            <element signature="e#2804#2958#0" expanded="false" />
+            <element signature="e#3158#3531#0" expanded="false" />
+            <element signature="e#4315#4435#0" expanded="false" />
+            <element signature="e#4459#5069#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3282,7 +3283,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/controller/Filter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="71" selection-start="2703" selection-end="2703" vertical-scroll-proportion="0.0">
+        <state line="92" column="11" selection-start="2643" selection-end="2643" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#1348#1561#0" expanded="false" />
             <element signature="e#1601#1784#0" expanded="false" />
@@ -3294,14 +3295,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/view/filter/Form.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="35" selection-start="1310" selection-end="1310" vertical-scroll-proportion="0.27439025">
+        <state line="51" column="20" selection-start="1333" selection-end="1352" vertical-scroll-proportion="0.2972561">
           <folding>
             <element signature="e#721#909#0" expanded="false" />
-            <element signature="e#2647#2778#0" expanded="false" />
-            <element signature="e#2803#2957#0" expanded="false" />
-            <element signature="e#3157#3530#0" expanded="false" />
-            <element signature="e#4314#4434#0" expanded="false" />
-            <element signature="e#4458#5068#0" expanded="false" />
+            <element signature="e#2648#2779#0" expanded="false" />
+            <element signature="e#2804#2958#0" expanded="false" />
+            <element signature="e#3158#3531#0" expanded="false" />
+            <element signature="e#4315#4435#0" expanded="false" />
+            <element signature="e#4459#5069#0" expanded="false" />
           </folding>
         </state>
       </provider>
