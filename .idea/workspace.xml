@@ -2730,7 +2730,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/resources/sass/config.rb" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/resources/sass/my-ext-theme.scss" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/view/filter/Form.js" afterPath="$PROJECT_DIR$/public/app/view/filter/Form.js" />
     </list>
     <ignored path="NodeSchedule.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -2759,10 +2758,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="6" selection-start="891" selection-end="891" vertical-scroll-proportion="0.0">
+            <state line="27" column="6" selection-start="963" selection-end="963" vertical-scroll-proportion="0.32947975">
               <folding>
                 <element signature="e#1216#5405#0" expanded="false" />
                 <element signature="e#4092#5403#0" expanded="false" />
@@ -2787,10 +2786,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/controller/Main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="26" selection-start="533" selection-end="533" vertical-scroll-proportion="0.3468208">
+            <state line="16" column="26" selection-start="533" selection-end="533" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -2843,9 +2842,9 @@
         <option value="$PROJECT_DIR$/development/app/controller/Main.js" />
         <option value="$PROJECT_DIR$/development/app/view/filter/Form.js" />
         <option value="$PROJECT_DIR$/development/.sencha/workspace/sencha.cfg" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/public/app/view/filter/Form.js" />
         <option value="$PROJECT_DIR$/public/app/controller/Main.js" />
+        <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
   </component>
@@ -3215,9 +3214,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/controller/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="26" selection-start="533" selection-end="533" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="6" selection-start="891" selection-end="891" vertical-scroll-proportion="0.0">
+        <state line="27" column="6" selection-start="963" selection-end="963" vertical-scroll-proportion="0.32947975">
           <folding>
             <element signature="e#1216#5405#0" expanded="false" />
             <element signature="e#4092#5403#0" expanded="false" />
@@ -3229,13 +3235,6 @@
             <element signature="e#7174#7834#0" expanded="false" />
             <element signature="e#7880#8459#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/controller/Main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="26" selection-start="533" selection-end="533" vertical-scroll-proportion="0.3468208">
-          <folding />
         </state>
       </provider>
     </entry>
