@@ -180,7 +180,7 @@ createStruct = function() {
      }
      */
 };
-createStruct();
+//createStruct();
 
 app.get('/', routes.index);
 app.get('/univer', function (req, res) {
