@@ -74,17 +74,15 @@ Ext.define('Sched.controller.Filter', {
 
         me.curKaf = kaf;
 
-        me.getGroupSelect().clearValue();
         me.getGroupsStore().filterBy( function(item) {
             return item.get('chair') == kaf.getId();
         });
     },
     onEndYearChanged: function (year) {
-        console.log(year)
         var me = this;
-        me.getGroupSelect().clearValue();
         me.curGrad = year;
         if(!year) return;
+
         me.getGroupsStore().filterBy(function(item) {
             return item.get('endYear') == year;
         });

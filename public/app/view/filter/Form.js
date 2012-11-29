@@ -43,10 +43,11 @@ Ext.define('Sched.view.filter.Form', {
                     var record = this.valueModels[0],
                         next = this.nextSibling();
 
-                    console.log(record.facultets())
                     next.clearValue();
-                    next.bindStore( record.facultets() );
+                    if ( !record ) return;
 
+
+                    next.bindStore( record.facultets() );
                     this.up('groups').fireEvent('univerChanged', record);
                 }
             }, {
@@ -60,8 +61,10 @@ Ext.define('Sched.view.filter.Form', {
                         next = this.nextSibling();
 
                     next.clearValue();
-                    next.bindStore( record.kafedras() );
+                    if ( !record ) return;
 
+
+                    next.bindStore( record.kafedras() );
                     this.up('groups').fireEvent('facultetChanged', record);
                 }
             }, {
@@ -71,9 +74,9 @@ Ext.define('Sched.view.filter.Form', {
                 displayField: 'title',
                 valueField: '_id',
                 onChange: function() {
-                    var record = this.valueModels[0],
-                        next = this.nextSibling();
+                    var record = this.valueModels[0];
 
+                    if ( !record ) return;
                     this.up('groups').fireEvent('kafedraChanged', record);
                 }
             }]
@@ -116,11 +119,14 @@ Ext.define('Sched.view.filter.Form', {
             }, {
                 xtype: 'combo',
                 id: 'groupSelector',
+                name: 'group',
                 store: "Groups",
                 displayField: 'title',
                 valueField: '_id',
                 emptyText: 'Группа',
                 onChange: function(group) {
+                    var rec = this.up('groups').getForm().updateRecord().getRecord();
+                    rec.save();
                     this.up('groups').fireEvent('groupChanged', this.valueModels[0]);
                 }
             }, {
