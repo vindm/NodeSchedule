@@ -40,9 +40,11 @@ Ext.define('Sched.view.filter.Form', {
                 displayField: 'title',
                 valueField: '_id',
                 onChange: function() {
+                    console.log(this)
                     var record = this.valueModels[0],
                         next = this.nextSibling();
 
+                    console.log(record.facultets())
                     next.clearValue();
                     next.bindStore( record.facultets() );
 

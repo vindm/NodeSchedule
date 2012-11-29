@@ -25,12 +25,6 @@ Ext.define('Sched.model.Lesson', {
         { name: 'ch', type: 'string' }
     ],
 
-    associations: [{
-        type: 'hasOne', model: 'Sched.model.Group',
-        primaryKey: '_id', foreignKey: '_group',
-        getterName: 'Group'
-    }],
-
     proxy: {
         type: 'rest',
         url: '/lessons',

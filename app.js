@@ -23,8 +23,8 @@ app.configure(function () {
 });
 app.configure('development', function () {
     app.use(express.errorHandler());
-    //app.use(express.static(path.join(__dirname, 'development')));
-    app.use(express.static(path.join(__dirname, 'production')));
+    //app.use(express.static(path.join(__dirname, '')));
+    app.use(express.static(path.join(__dirname, 'public/production')));
 });
 
 var models = require('./models/Schedule').models(db),

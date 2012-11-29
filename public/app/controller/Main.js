@@ -14,9 +14,11 @@ Ext.define('Sched.controller.Main', {
             model.load(1, {
                 scope: this,
                 callback: function(record, operation) {
-                    if ( record ) {
+                    if ( !record ) {
+                        console.log('user not found')
                         me.getFromVK();
                     } else {
+                        console.log('user found')
                         console.log(record)
                         me.bindUser( record );
                     }
@@ -86,6 +88,8 @@ Ext.define('Sched.controller.Main', {
         user = model.create(user);
         user.setId(1);
         user.save();
+
+        console.log('user saved')
         console.log(user)
         me.bindUser( user );
     },
