@@ -6,7 +6,7 @@ Ext.define('Sched.controller.Filter', {
         'univer.Univer', 'univer.Facultet', 'univer.Kafedra',
         'Group', 'Prepod', 'Schedule'
     ],
-    stores: ['Univers', 'Groups', 'Prepods', 'Schedules'],
+    stores: ['Univers', 'Groups', 'Prepods'],
     refs: [
         { selector: '#groups', ref: 'filterForm' },
         { selector: '#groups #univerSelector',      ref: 'univerSelect' },
@@ -90,8 +90,7 @@ Ext.define('Sched.controller.Filter', {
     onGroupChanged: function (group) {
         var me = this;
         me.curGroup = group;
-        var rec = me.getFilterForm().getForm().updateRecord().getRecord();
-        rec.save();
+        me.getFilterForm().getForm().updateRecord().getRecord().save();
         me.application.fireEvent('groupChanged', group);
     }
 });

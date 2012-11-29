@@ -193,7 +193,8 @@ app.get('/univer', function (req, res) {
     });
 });
 app.get('/groups', function (req, res) {
-    var facId = req.query._facultet;
+    var univerId = req.query._univer,
+        facId = req.query._facultet;
     Group.find({_facultet: facId }, function(err, groups) {
         res.contentType('json');
         res.json({

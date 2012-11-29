@@ -32,20 +32,25 @@ Ext.define('Sched.view.filter.Form', {
         {
             title: 'Университет',
 
+            defaults: {
+                displayField: 'title',
+                valueField: '_id',
+                xtype: 'combo',
+                queryMode: 'local',
+                anchor: '100%'
+            },
             items: [{
                 id: 'univerSelector',
                 name: 'univer',
                 emptyText: 'Выбор университета',
                 store: 'Univers',
-                displayField: 'title',
-                valueField: '_id',
                 onChange: function(val) {
+                    console.log('univer')
                     var record = this.valueModels[0],
                         next = this.nextSibling();
 
                     next.clearValue();
                     if ( !record ) return;
-
 
                     next.bindStore( record.facultets() );
                     this.up('groups').fireEvent('univerChanged', record);
@@ -54,15 +59,13 @@ Ext.define('Sched.view.filter.Form', {
                 id: 'facultetSelector',
                 name: 'faculty',
                 emptyText: 'Выбор факультета',
-                displayField: 'title',
-                valueField: '_id',
                 onChange: function() {
+                    console.log('fac')
                     var record = this.valueModels[0],
                         next = this.nextSibling();
 
                     next.clearValue();
                     if ( !record ) return;
-
 
                     next.bindStore( record.kafedras() );
                     this.up('groups').fireEvent('facultetChanged', record);
@@ -71,9 +74,8 @@ Ext.define('Sched.view.filter.Form', {
                 id: 'kafedraSelector',
                 name: 'chair',
                 emptyText: 'Выбор кафедры',
-                displayField: 'title',
-                valueField: '_id',
                 onChange: function() {
+                    console.log('kaf')
                     var record = this.valueModels[0];
 
                     if ( !record ) return;
@@ -114,6 +116,7 @@ Ext.define('Sched.view.filter.Form', {
                     return years;
                 }()),
                 onChange: function(year) {
+                    console.log('grad')
                     if(year == 0) return;
                     this.up('groups').fireEvent('endYearChanged', year);
                 }
@@ -126,6 +129,7 @@ Ext.define('Sched.view.filter.Form', {
                 valueField: '_id',
                 emptyText: 'Группа',
                 onChange: function(group) {
+                    console.log('group')
                     var record = this.valueModels[0];
 
                     if ( !record ) return;

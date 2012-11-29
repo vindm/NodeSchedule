@@ -8,8 +8,8 @@ Ext.define('Sched.model.User', {
         { name: 'univer' },
         { name: 'faculty' },
         { name: 'chair' },
-        { name: 'group' },
-        { name: 'graduation',   type: 'int' }
+        { name: 'graduation',   type: 'int' },
+        { name: 'group' }
     ],
 
     proxy: {
