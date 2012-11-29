@@ -39,8 +39,8 @@ Ext.define('Sched.view.filter.Form', {
                 store: 'Univers',
                 displayField: 'title',
                 valueField: '_id',
-                onChange: function(val) {
-                    var record = this.store.getById(val),
+                onChange: function() {
+                    var record = this.store.getById(this.value),
                         next = this.nextSibling();
 
                     console.log(record.facultets())
@@ -56,7 +56,7 @@ Ext.define('Sched.view.filter.Form', {
                 displayField: 'title',
                 valueField: '_id',
                 onChange: function() {
-                    var record = this.valueModels[0],
+                    var record = this.store.getById(this.value),
                         next = this.nextSibling();
 
                     next.clearValue();
@@ -71,7 +71,7 @@ Ext.define('Sched.view.filter.Form', {
                 displayField: 'title',
                 valueField: '_id',
                 onChange: function() {
-                    var record = this.valueModels[0],
+                    var record = this.store.getById(this.value),
                         next = this.nextSibling();
 
                     this.up('groups').fireEvent('kafedraChanged', record);
