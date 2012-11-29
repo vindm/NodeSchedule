@@ -2731,7 +2731,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/resources/sass/my-ext-theme.scss" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/controller/Filter.js" afterPath="$PROJECT_DIR$/public/app/controller/Filter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/model/User.js" afterPath="$PROJECT_DIR$/public/app/model/User.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/view/filter/Form.js" afterPath="$PROJECT_DIR$/public/app/view/filter/Form.js" />
     </list>
     <ignored path="NodeSchedule.iws" />
@@ -2783,7 +2782,7 @@
       <file leaf-file-name="Filter.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/controller/Filter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="24" selection-start="2187" selection-end="2187" vertical-scroll-proportion="0.0">
+            <state line="92" column="36" selection-start="2681" selection-end="2681" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#1361#1574#0" expanded="false" />
                 <element signature="e#1614#1797#0" expanded="false" />
@@ -2795,8 +2794,13 @@
       <file leaf-file-name="Form.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/view/filter/Form.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="121" column="30" selection-start="3679" selection-end="3679" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="116" column="41" selection-start="3513" selection-end="3513" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#2541#2672#0" expanded="false" />
+                <element signature="e#2697#2851#0" expanded="false" />
+                <element signature="e#3051#3424#0" expanded="false" />
+                <element signature="e#4127#4247#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -2836,8 +2840,8 @@
         <option value="$PROJECT_DIR$/development/.sencha/workspace/sencha.cfg" />
         <option value="$PROJECT_DIR$/public/app/controller/Main.js" />
         <option value="$PROJECT_DIR$/public/app/model/User.js" />
-        <option value="$PROJECT_DIR$/public/app/view/filter/Form.js" />
         <option value="$PROJECT_DIR$/public/app/controller/Filter.js" />
+        <option value="$PROJECT_DIR$/public/app/view/filter/Form.js" />
         <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
@@ -3184,9 +3188,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/view/filter/Form.js">
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="30" selection-start="3679" selection-end="3679" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/controller/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="26" selection-start="533" selection-end="533" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -3200,7 +3211,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/controller/Filter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="24" selection-start="2187" selection-end="2187" vertical-scroll-proportion="0.0">
+        <state line="92" column="36" selection-start="2681" selection-end="2681" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#1361#1574#0" expanded="false" />
             <element signature="e#1614#1797#0" expanded="false" />
@@ -3208,17 +3219,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/controller/Main.js">
+    <entry file="file://$PROJECT_DIR$/public/app/view/filter/Form.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="26" selection-start="533" selection-end="533" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="116" column="41" selection-start="3513" selection-end="3513" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#2541#2672#0" expanded="false" />
+            <element signature="e#2697#2851#0" expanded="false" />
+            <element signature="e#3051#3424#0" expanded="false" />
+            <element signature="e#4127#4247#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

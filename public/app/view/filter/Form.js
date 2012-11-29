@@ -114,6 +114,7 @@ Ext.define('Sched.view.filter.Form', {
                     return years;
                 }()),
                 onChange: function(year) {
+                    if(year == 0) return;
                     this.up('groups').fireEvent('endYearChanged', year);
                 }
             }, {
@@ -125,8 +126,9 @@ Ext.define('Sched.view.filter.Form', {
                 valueField: '_id',
                 emptyText: 'Группа',
                 onChange: function(group) {
-                    var rec = this.up('groups').getForm().updateRecord().getRecord();
-                    rec.save();
+                    var record = this.valueModels[0];
+
+                    if ( !record ) return;
                     this.up('groups').fireEvent('groupChanged', this.valueModels[0]);
                 }
             }, {

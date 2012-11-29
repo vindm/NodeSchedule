@@ -90,6 +90,8 @@ Ext.define('Sched.controller.Filter', {
     onGroupChanged: function (group) {
         var me = this;
         me.curGroup = group;
+        var rec = me.getFilterForm().getForm().updateRecord().getRecord();
+        rec.save();
         me.application.fireEvent('groupChanged', group);
     }
 });
