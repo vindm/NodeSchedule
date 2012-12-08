@@ -180,7 +180,7 @@ createStruct = function() {
      }
      */
 };
-//createStruct();
+createStruct();
 
 app.get('/', routes.index);
 app.get('/univer', function (req, res) {
@@ -225,93 +225,46 @@ app.get('/prepods', function (req, res) {
 });
 
 app.put('/lessons/:id', function(req, res) {
-    var scheduleId = req.query._schedule,
-        lessonId = req.params.id,
+    var lessonId = req.params.id,
         lessonBody = req.body;
 
-    if(!scheduleId) {
-        res.contentType('json');
-        res.json({
-            success: false
-        });
-        return;
-    }
-
-
-    Schedule.findById(scheduleId, function(err, schedule) {
-        err && console.log(err);
-        console.log(schedule)
-
-        var les = schedule.lessons.id(lessonId);
-        les.set(lessonBody);
-
-        schedule.save(function(err) {
-            res.contentType('json');
-            res.json({
-                success: true
-            });
-        });
-
-    });
-});
-app.post('/lessons', function(req, res) {
-    var scheduleId = req.query._schedule,
-        lessonBody = req.body;
-
-    if(!scheduleId) {
-        res.contentType('json');
-        res.json({
-            success: false
-        });
-        return;
-    }
-
-    delete lessonBody['_id'];
-
-    Schedule.findById(scheduleId, function(err, schedule) {
-        err && console.log(err);
-
-        console.log(lessonBody)
-        schedule.lessons.push(lessonBody);
-        var added = schedule.lessons[0];
-
-        schedule.save(function(err, schedule) {
+    Lesson.findById( lessonId, function( err, lesson ) {
+        lesson.set( lessonBody );
+        lesson.save(function(err, lessons) {
             res.contentType('json');
             res.json({
                 success: true,
-                data: added
+                data: lesson
             });
         });
-
-    });
-
+    })
 });
-app.del('/lessons/:id', function(req, res) {
-    var scheduleId = req.query._schedule,
-        lessonId = req.params.id;
+app.post('/lessons', function(req, res) {
+    var lessonBody = req.body,
+        lesson = new Lesson();
 
-    if(!scheduleId || !lessonId) {
+    delete lessonBody['_id'];
+    lesson.set(lessonBody);
+
+    lesson.save(function(err, lesson) {
+        console.log(err, lesson)
         res.contentType('json');
         res.json({
-            success: false
+            success: !err,
+            data: lesson
         });
-        return;
-    }
-
-    Schedule.findById(scheduleId, function(err, schedule) {
-        err && console.log(err);
-
-        schedule.lessons.id(lessonId).remove();
-
-        schedule.save(function(err) {
-            console.log(schedule.lessons)
-            res.contentType('json');
-            res.json({
-                success: true
-            });
-        });
-
     });
+});
+app.del('/lessons/:id', function(req, res) {
+    var lessonId = req.params.id;
+    Lesson.remove( { _id: lessonId }, function ( err ) {
+        res.contentType('json');
+        res.json({
+            success: !err
+        });
+    })
+
+
 });
 
 var port = process.env.PORT || 5000;

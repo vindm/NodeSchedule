@@ -71,22 +71,21 @@ mongoose.model('Schedule', SchedSchema);
 
 var LessonSchema = new Schema({
     _group: { type: Schema.Types.ObjectId, ref: 'Group' },
-    _prepod: { type: Schema.Types.ObjectId, ref: 'Prepod' },
 
-    dates: [Date],
-    day: Number,
-    time: Number,
+    title:      String,
+    typ:        String,
 
-    title: String,
-    typ: String,
-    audit: String,
+    _subGroup:  Schema.Types.ObjectId,
+    subIndex:   { type: Number, default: 0 },
+    subChar:    { type: String, default: 'А' },
 
-    isSub: { type: Boolean, default: false },
-    _subId: Schema.Types.ObjectId,
-    subCount: { type: Number, default: 0 },
-    subIndex:  { type: Number, default: 0 },
-    subChars: { type: Number, default: 0 },
-    ch: String
+    time:       Number,
+    day:        Number,
+    dates:      [Date],
+
+    audit:      String,
+
+    _prepod:    { type: Schema.Types.ObjectId, ref: 'Prepod' }
 });
 mongoose.model('Lesson', LessonSchema);
 
@@ -96,7 +95,7 @@ mongoose.model('Lesson', LessonSchema);
 exports.models = function(db) {
     return {
         Univer: db.model('Univer'),
-        Group: db.model('Group'),
+        Group:  db.model('Group'),
         Prepod: db.model('Prepod'),
         Lesson: db.model('Lesson')
     };

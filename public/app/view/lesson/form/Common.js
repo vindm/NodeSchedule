@@ -18,14 +18,17 @@ Ext.define('Sched.view.lesson.form.Common', {
             labelWidth: '50%',
             labelAlign: 'right',
             xtype: 'combo',
-            hideTrigger: true
+            queryMode: 'local'
         }
     },
     items: [{
         title: 'Занятие',
         items: [{
-            name: 'title', fieldLabel: 'Предмет',
-            store: ['Математика', 'javaScript'],
+            name: 'title',
+            fieldLabel: 'Предмет',
+            displayField: 'title',
+            valueField: 'title',
+            store: 'Lessons',
             minLength: 2
         }, {
             name: 'typ', fieldLabel: 'Тип',
@@ -47,6 +50,7 @@ Ext.define('Sched.view.lesson.form.Common', {
         title: 'Подгруппы',
         items: [{
             name: 'subCount',
+            id: 'subCount',
             fieldLabel: 'Количество',
             hideTrigger: false,
             autoSelect: true,
@@ -57,10 +61,11 @@ Ext.define('Sched.view.lesson.form.Common', {
                 [4, '4 подгруппы']
             ]
         }, {
-            name: 'chars',
+            name: 'subChars',
+            id: 'subChars',
             fieldLabel: 'Обозначение',
             hideTrigger: false,
-            hidden: true,
+            //hidden: true,
             hideMode: 'offsets',
             labelWidth: 185,
             autoSelect: true,

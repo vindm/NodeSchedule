@@ -361,7 +361,7 @@ Ext.define('Ext.picker.Date', {
             },
             click: {
                 element: 'eventEl',
-                fn: me.handleDateClick, 
+                fn: me.handleDateClick,
                 scope: me,
                 delegate: 'a.' + me.baseCls + '-date'
             }

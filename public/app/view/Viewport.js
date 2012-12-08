@@ -1,10 +1,7 @@
 Ext.define('Sched.view.Viewport', {
-    renderTo: Ext.getBody(),
     extend: 'Ext.container.Viewport',
-
-    layout: {
-        type: 'border'
-    },
+    renderTo: Ext.getBody(),
+    layout: 'border',
 
     items: [{
         xtype: 'week',

@@ -9,7 +9,8 @@ Ext.define('Sched.view.lesson.DatePicker', {
         month: 0,
         isFirst: false,
         isLast: false,
-        values: []
+        values: [],
+        enabledDay: false
     },
 
     renderTpl: [
@@ -57,9 +58,6 @@ Ext.define('Sched.view.lesson.DatePicker', {
                 var end = value % 7 === 0 && value !== 0;
                 return end ? '</tr><tr role="row">' : '';
             },
-            renderTodayBtn: function(values, out) {
-                Ext.DomHelper.generateMarkup(values.$comp.todayBtn.getRenderTree(), out);
-            },
             renderMonthBtn: function(values, out) {
                 Ext.DomHelper.generateMarkup(values.$comp.monthBtn.getRenderTree(), out);
             }
@@ -104,50 +102,8 @@ Ext.define('Sched.view.lesson.DatePicker', {
             });
         }
 
-        me.keyNav = new Ext.util.KeyNav(me.eventEl, Ext.apply({
-            scope: me,
-            left : function(e){
-                if(e.ctrlKey){
-                    me.showPrevMonth();
-                }else{
-                    me.update(eDate.add(me.activeDate, day, -1));
-                }
-            },
-
-            right : function(e){
-                if(e.ctrlKey){
-                    me.showNextMonth();
-                }else{
-                    me.update(eDate.add(me.activeDate, day, 1));
-                }
-            },
-
-            up : function(e){
-                if(e.ctrlKey){
-                    me.showNextYear();
-                }else{
-                    me.update(eDate.add(me.activeDate, day, -7));
-                }
-            },
-
-            down : function(e){
-                if(e.ctrlKey){
-                    me.showPrevYear();
-                }else{
-                    me.update(eDate.add(me.activeDate, day, 7));
-                }
-            },
-            pageUp : me.showNextMonth,
-            pageDown : me.showPrevMonth,
-            enter : function(e){
-                e.stopPropagation();
-                return true;
-            }
-        }, me.keyNavConfig));
-
-        me.on({
-            'monthChange': me.changeMonth,
-            scope: me
+        me.eventEl.on('click', me.handleDateClick, me, {
+            delegate: 'a.' + me.baseCls + '-date'
         });
 
         me.update(me.value);
@@ -174,31 +130,36 @@ Ext.define('Sched.view.lesson.DatePicker', {
             parent = Ext.fly(t.parentNode);
 
         e.stopEvent();
-        if(!me.disabled && t.dateValue && !parent.hasCls(me.disabledCellCls)){
-            me.doCancelFocus = me.focusOnSelect === false;
 
-            var value = new Date(t.dateValue),
-                selected = parent.hasCls(me.selectedCls);
+        if(me.disabled || !t.dateValue || !parent.hasCls(me.activeCls)) return;
 
-            if ( selected ) {
-                me.removeValue( value );
-                me.fireEvent('removeValue', me, value);
-            } else {
-                me.setValue( value );
-                me.fireEvent('addValue', me, value);
-            }
+        me.doCancelFocus = me.focusOnSelect === false;
 
-            delete me.doCancelFocus;
-            handler && handler.call(me.scope || me, me, me.value);
-            me.onSelect();
+        var value = new Date(t.dateValue),
+            selected = parent.hasCls(me.selectedCls);
+
+        if ( selected ) {
+            me.removeValue( value );
+            me.fireEvent('removeValue', me, value);
+        } else {
+            me.setValue( value );
+            me.fireEvent('addValue', me, value);
         }
+
+        delete me.doCancelFocus;
+        handler && handler.call(me.scope || me, me, me.value);
+        me.onSelect();
+
+    },
+    handleMouseWheel: function () {
+        console.log('wheel');
     },
 
     setValue : function(value) {
         value = Ext.Date.clearTime(value, true);
 
         this.values.push( value.getDate() );
-        return this.selectedUpdate(value, true);
+        this.selectedUpdate(value, true);
     },
     removeValue: function (value) {
         value = Ext.Date.clearTime(value, true);
@@ -281,16 +242,7 @@ Ext.define('Sched.view.lesson.DatePicker', {
             cell.firstChild.dateValue = value;
             var day = current.getDate();
 
-            selected.forEach(function(sel){
-                if(day == sel){
-                    cell.className += ' ' + me.selectedCls;
-                    me.fireEvent('highlightitem', me, cell);
-                    if (visible && me.floating) {
-                        Ext.fly(cell.firstChild).focus(50);
-                    }
-                    return;
-                }
-            });
+
 
             // disabling
             if(value < min) {
@@ -303,22 +255,43 @@ Ext.define('Sched.view.lesson.DatePicker', {
                 cell.title = me.maxText;
                 return;
             }
+            if(me.enabledDay && me.enabledDay!==new Date(value).getDay()){
+                cell.className = disabledCls;
+                cell.title = 'bad day';
+                return;
+            }
+
+
+
             if(ddays){
                 if(ddays.indexOf(current.getDay()) != -1){
                     cell.title = ddaysText;
                     cell.className = disabledCls;
                 }
             }
-            if(ddMatch && format){
+            if (ddMatch && format){
                 formatValue = eDate.dateFormat(current, format);
-                if(ddMatch.test(formatValue)){
+                if (ddMatch.test(formatValue)){
                     cell.title = ddText.replace('%0', formatValue);
                     cell.className = disabledCls;
                 }
             }
+
+            selected.forEach( function( sel ) {
+                if ( day == sel && cell.className == me.activeCls ){
+                    cell.className += ' ' + me.selectedCls;
+                    me.fireEvent('highlightitem', me, cell);
+                    if (visible && me.floating) {
+                        Ext.fly( cell.firstChild ).focus(50);
+                    }
+                    return;
+                }
+            });
+
         };
 
         for(; i < me.numDays; ++i) {
+            var cell = cells[i];
             if (i < startingPos) {
                 html = (++prevStart);
                 cls = me.prevCls;
@@ -330,9 +303,10 @@ Ext.define('Sched.view.lesson.DatePicker', {
                 cls = me.activeCls;
             }
             textNodes[i].innerHTML = html;
-            cells[i].className = cls;
             current.setDate(current.getDate() + 1);
-            setCellClass(cells[i]);
+
+            cell.className = cls;
+            setCellClass(cell);
         }
 
         me.monthBtn.setText(Ext.Date.format(date, me.monthYearFormat));
@@ -340,8 +314,5 @@ Ext.define('Sched.view.lesson.DatePicker', {
 
     getMyDays: function () {
 
-    },
-    handleMouseWheel: function () {
-        console.log('wheel');
     }
 });

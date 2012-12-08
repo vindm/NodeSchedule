@@ -1,7 +1,7 @@
 Ext.define('Sched.view.filter.Form', {
     extend: 'Ext.form.Panel',
     alias: 'widget.groups',
-    id: 'groups',
+    id: 'filter',
 
     bodyStyle: 'background: #F7F7F7;',
     width: 220,
@@ -45,12 +45,15 @@ Ext.define('Sched.view.filter.Form', {
                 emptyText: 'Выбор университета',
                 store: 'Univers',
                 onChange: function(val) {
-                    console.log('univer')
+                    console.log('univer', val);
+
                     var record = this.valueModels[0],
                         next = this.nextSibling();
-                    console.log(this)
-                    console.log(record)
-                    if ( !record ) return;
+
+                    if ( !record ) {
+                        this.clearValue();
+                        return;
+                    }
 
                     next.bindStore( record.facultets() );
                     this.up('groups').fireEvent('univerChanged', record);
@@ -59,12 +62,16 @@ Ext.define('Sched.view.filter.Form', {
                 id: 'facultetSelector',
                 name: 'faculty',
                 emptyText: 'Выбор факультета',
-                onChange: function() {
-                    console.log('fac')
+                onChange: function(fac) {
+                    console.log('fac', fac)
+
                     var record = this.valueModels[0],
                         next = this.nextSibling();
 
-                    if ( !record ) return;
+                    if ( !record ) {
+                        this.clearValue();
+                        return;
+                    }
 
                     next.bindStore( record.kafedras() );
                     this.up('groups').fireEvent('facultetChanged', record);
@@ -73,11 +80,15 @@ Ext.define('Sched.view.filter.Form', {
                 id: 'kafedraSelector',
                 name: 'chair',
                 emptyText: 'Выбор кафедры',
-                onChange: function() {
-                    console.log('kaf')
-                    var record = this.valueModels[0];
+                onChange: function(kaf) {
+                    console.log('kaf', kaf)
 
-                    if ( !record ) return;
+                    var record = this.valueModels[0];
+                    if ( !record ) {
+                        this.clearValue();
+                        return;
+                    }
+
                     this.up('groups').fireEvent('kafedraChanged', record);
                 }
             }]
@@ -115,7 +126,8 @@ Ext.define('Sched.view.filter.Form', {
                     return years;
                 }()),
                 onChange: function(year) {
-                    console.log('grad')
+                    console.log('grad', year)
+
                     if(year == 0) return;
                     this.up('groups').fireEvent('endYearChanged', year);
                 }
@@ -128,11 +140,18 @@ Ext.define('Sched.view.filter.Form', {
                 valueField: '_id',
                 emptyText: 'Группа',
                 onChange: function(group) {
-                    console.log('group')
-                    var record = this.valueModels[0];
+                    console.log('group', group);
 
-                    if ( !record ) return;
-                    this.up('groups').fireEvent('groupChanged', this.valueModels[0]);
+                    var record = this.valueModels[0];
+                    if ( !record ) {
+                        this.clearValue();
+                        return;
+                    }
+
+                    var form = this.up('groups'),
+                        rec = form.getForm().updateRecord().getRecord();
+                    form.fireEvent('groupChanged', record);
+                    rec.save();
                 }
             }, {
                 xtype: 'button',

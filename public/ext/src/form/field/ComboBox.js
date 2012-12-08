@@ -143,7 +143,7 @@ Ext.define('Ext.form.field.ComboBox', {
     hiddenDataCls: Ext.baseCSSPrefix + 'hide-display ' + Ext.baseCSSPrefix + 'form-data-hidden',
 
     /**
-     * @cfg
+     * @cfg{}
      * @inheritdoc
      */
     fieldSubTpl: [
@@ -272,8 +272,8 @@ Ext.define('Ext.form.field.ComboBox', {
      *
      *     In `queryMode: 'remote'`, the ComboBox loads its Store dynamically based upon user interaction.
      *
-     *     This is typically used for "autocomplete" type inputs, and after the user finishes typing, the Store is {@link
-     *     Ext.data.Store#method-load load}ed.
+     *     This is typically used for "autocomplete" type inputs, and after the user finishes typing, the Store is
+     *     {@link Ext.data.Store#method-load} loaded.
      *
      *     A parameter containing the typed string is sent in the load request. The default parameter name for the input
      *     string is `query`, but this can be configured using the {@link #queryParam} config.
@@ -1070,7 +1070,6 @@ Ext.define('Ext.form.field.ComboBox', {
             selectionchange: me.onListSelectionChange,
             scope: me
         });
-
         return picker;
     },
 

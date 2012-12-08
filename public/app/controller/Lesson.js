@@ -17,7 +17,6 @@ Ext.define('Sched.controller.Lesson', {
         var me = this;
         me.application.on({
             editLesson: me.onLessonStartEdit,
-            newSubsSaved: me.onNewSubsSaved,
             scope: me
         });
         me.control({
@@ -56,7 +55,14 @@ Ext.define('Sched.controller.Lesson', {
             prepods = me.getPrepodsStore();
 
         me.bindLesson = function ( lesson ) {
-            var prepod = prepods.getById( lesson.get('_prepod'));
+
+            datesForm.loadRecord( lesson );
+            datesForm.on({
+                save: me.onLessonDatesChanged,
+                scope: me
+            });
+
+            var prepod = prepods.getById( lesson.get('_prepod') );
             prepodForm.clearListeners();
             prepod && prepodForm.loadRecord(prepod);
             prepodForm.listeners = {
@@ -64,12 +70,7 @@ Ext.define('Sched.controller.Lesson', {
                 scope: me
             };
 
-            datesForm.loadRecord(lesson);
-            datesForm.on({
-                datesChanged: me.onLessonDatesChanged,
-                save: me.onLessonDatesSave,
-                scope: me
-            });
+
         };
     },
 
@@ -77,14 +78,19 @@ Ext.define('Sched.controller.Lesson', {
     onLessonStartEdit: function ( lessons, selectedIndex ) {
         var me = this,
             commonForm = me.getLessonCommon(),
+            form = commonForm.getForm(),
             win = me.win;
 
         commonForm.loadRecord(lessons[0]);
+        form.findField('subCount').setValue( lessons.length );
+        form.findField('subChars').setValue( lessons[0].getCharSet() );
+
         commonForm.on({
             commonSave: me.onLessonCommonChanged,
             subsSave: me.onLessonSubsChanged,
             scope: me
         });
+
         win.show();
 
         me.bindLessons( lessons, selectedIndex );
@@ -96,120 +102,107 @@ Ext.define('Sched.controller.Lesson', {
             tabs = me.win.down('#subsToggler'),
             cnt = lessons.length;
 
+        cnt < 2 ? tabs.hide() : tabs.show();
+
         me.curLessons = lessons;
         me.mainLesson = lessons[0];
 
         lessons = lessons.map(function ( lesson ) {
             return {
-                text: 'Подгруппа ' + ( lesson.get('ch') ),
+                text: 'Подгруппа ' + ( lesson.get('subChar') ),
                 lesson: lesson,
                 toggleHandler: function (btn, state) {
-                    me.bindLesson(this.lesson);
+                    me.bindLesson( this.lesson );
+                    me.application.fireEvent('lessonSelected', lesson);
                 }
             };
         });
 
         tabs.removeAll();
-        tabs.add( lessons )[selected].toggle(true);
+        tabs.add( lessons )[selected||0].toggle(true);
     },
 
-    onLessonCommonChanged: function (form, fieldset) {
+    onLessonCommonChanged: function ( form ) {
         var me = this,
-            lesson = form.getRecord(),
             fields = form.getForm().getFieldValues(),
-            subs = lesson.getSubGroups(),
-            toSave = [];
+            lessons = me.curLessons,
+            store = me.getLessonsStore();
 
-        lesson.set(fields);
-        if( !lesson.dirty ) return;
-        me.application.fireEvent('lessonSaved', lesson);
-
-        if ( subs.items ) {
-            subs.each(function(sub) {
-                sub.set(vals);
-                me.application.fireEvent('lessonSaved', sub);
-            });
-        }
-    },
-
-    onLessonSubsChanged: function ( form ) {
-        var me = this,
-            values = form.getForm().getFieldValues(),
-
-            count = values.subCount,
-            chars = values.chars || 0;
-
-        me.updateLessons(count, chars);
-    },
-    onNewSubsSaved: function( lessons ) {
-        this.bindLessons( lessons );
-    },
-    updateLessons: function ( count, chars ) {
-        var me = this,
-            main = me.mainLesson,
-            lesId = main.getId(),
-            all = me.curLessons,
-            cnt = all.length,
-            removed = false, added = false;
-
-        if ( cnt < count ) {
-            var sub = main.copy().data,
-                model= me.getScheduleLessonModel(),
-                subLesson;
-            delete sub['_id'];
-            for ( var i = cnt; i < count; i++ ) {
-                subLesson = Ext.create('Sched.model.schedule.Lesson', sub);
-                delete subLesson.data['_id'];
-                all.push( subLesson );
-            }
-        }
-        else if ( cnt > count ) removed = all.splice(count, cnt - count);
-
-        cnt = all.length;
-        all.forEach( function( sub, ind ) {
-            var num = ind,
-                сh = (num).toSubGroupChar(chars);
-
-            sub.set({
-                me: num,
-                _sub_id: lesId,
-                chars: chars,
-                ch: сh,
-                subCount: cnt
-            });
-
-            if ( !sub.data['_id'] ) {
-                if ( !added ) added = [];
-                added.push(sub);
+        lessons.forEach(function(sub) {
+            sub.set(fields);
+            if ( sub.get('blank') ) {
+                sub.set('blank', false);
+                store.add( sub );
             }
         });
 
-        this.application.fireEvent('subGroupsUpdated', lesId, added, removed);
+        me.application.fireEvent( 'lessonsUpdated', [] );
 
-        all = Ext.Array.sort(all, function( a, b ) {
-            return a.get('me') > b.get('me') ? 1 : -1;
+    },
+    onLessonSubsChanged: function ( form ) {
+        var me = this,
+
+            values = form.getForm().getFieldValues(),
+            count = values.subCount,
+            chars = values.subChars || 0,
+
+            lessonsStore = me.getLessonsStore(),
+            main = me.mainLesson,
+            all = me.curLessons,
+
+            lesId = main.getId(),
+            cnt = all.length,
+
+            ex = Ext,
+            dirty = true;
+
+        if ( cnt < count ) {
+            var sub = main.copy().data;
+            delete sub['_id'];
+
+            for ( ; cnt < count; cnt++ ) all.push( lessonsStore.add(sub)[0] );
+
+        }
+        else if ( cnt > count ) lessonsStore.remove( all.splice(count, cnt - count) );
+        else dirty = false;
+
+        cnt = all.length;
+
+        all.forEach( function( sub, num ) {
+            sub.set({
+                _subGroup: cnt == 1 ? null : lesId,
+                subIndex: num
+            });
+            sub.setChar( chars );
+        });
+
+        me.application.fireEvent( 'lessonsUpdated', dirty ? [ main.get('day') ] : [], false );
+
+        if ( cnt > 1 ) all = ex.Array.sort(all, function( a, b ) {
+            return a.get('subIndex') > b.get('subIndex') ? 1 : -1;
         });
 
         me.bindLessons(all);
         return all;
     },
 
-
     onLessonDatesChanged: function ( form ) {
         var me = this,
             lesson = form.getRecord(),
-            fields = form.getForm().getFieldValues();
+            fields = form.getForm().getFieldValues(),
+            days = [], prevDay = 1, curDay = 1,
+            select = false;
+
         fields['dates'] = me.getDatesPicker().value;
-        var dayA = lesson.get('day');
+
+        prevDay = lesson.get('day');
+        curDay = fields['day'];
+        days = ( prevDay == curDay ) ? [ curDay ] : [ curDay, prevDay ];
+
         lesson.set(fields);
         if ( !lesson.dirty ) return;
 
-        me.application.fireEvent('lessonDatesChanged', lesson, dayA);
-    },
-    onLessonDatesSave: function (form) {
-        var lesson = form.getRecord();
-        lesson.endEdit();
-        this.application.fireEvent('lessonSaved', lesson);
+        me.application.fireEvent('lessonsUpdated', days, lesson);
     },
 
     onLessonAuditorySave: function (form) {

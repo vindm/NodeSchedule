@@ -1,30 +1,61 @@
 Ext.define('Sched.controller.Main', {
     extend: 'Ext.app.Controller',
-    models: ['User', 'univer.Univer', 'univer.Facultet', 'univer.Kafedra'],
-    stores: ["Univers"],
+    models: [
+        'User',
+        'univer.Univer', 'univer.Facultet', 'univer.Kafedra',
+        'Group', 'Prepod', 'Schedule'
+    ],
+    stores: [ "Univers", 'Groups', 'Prepods' ],
+    views: [ 'filter.Form' ],
+    refs: [
+        { selector: '#filter',                      ref: 'filterForm' },
+        { selector: '#filter #univerSelector',      ref: 'univerSelect' },
+        { selector: '#filter #facultetSelector',    ref: 'facultetSelect' },
+        { selector: '#filter #kafedraSelector',     ref: 'kafedraSelect' },
+        { selector: '#filter #gradSelector',        ref: 'gradSelect' },
+        { selector: '#filter #groupSelector',       ref: 'groupSelect' }
+    ],
+
+    init: function () {
+        var me = this;
+         me.control({
+            '#filter': {
+                'univerChanged':    me.onUniverChanged,
+                'facultetChanged':  me.onFacultetChanged,
+                'kafedraChanged':   me.onKafChanged,
+                'endYearChanged':   me.onEndYearChanged,
+                'groupChanged':     me.onGroupChanged
+            }
+        });
+    },
+
     onLaunch: function () {
         var me = this;
-        me.getUser();
+        me.getUniversStore().load({
+            callback: function(records) {
+                console.log('univers loaded', records);
+                me.getUser();
+            }
+        });
+
     },
 
     getUser: function () {
-        var me = this;
-        if ( typeof(Storage)!=="undefined" ) {
-            var model = me.getUserModel();
-            model.load(1, {
-                scope: this,
-                callback: function(record, operation) {
-                    if ( !record ) {
-                        console.log('user not found')
-                        me.getFromVK();
-                    } else {
-                        console.log('user found')
-                        console.log(record)
-                        me.bindUser( record );
-                    }
+        var me = this,
+            model = me.getUserModel();
+        model.load(1, {
+            callback: function(record, operation) {
+                if ( !record ) {
+                    console.log('user not found')
+                    me.getFromVK();
+                } else {
+                    console.log('user found')
+                    console.log(record)
+                    me.bindUser( record );
                 }
-            });
-        }
+            },
+            scope: me
+        });
     },
     getFromVK: function () {
         var me = this,
@@ -69,18 +100,16 @@ Ext.define('Sched.controller.Main', {
                 f = u && u.facultets().findRecord('vk', f);
                 k = f && f.kafedras().findRecord('vk', k);
 
-
                 if ( u ) user['univer'] = u.getId();
                 if ( f ) user['faculty'] = f.getId();
                 if ( k ) user['chair'] = k.getId();
-                user['graduation'] = univer.graduation;
+                //user['graduation'] = univer.graduation;
 
                 me.save(user);
 
             });
         });
     },
-
     save: function (user) {
         var me = this,
             model = me.getUserModel();
@@ -93,9 +122,61 @@ Ext.define('Sched.controller.Main', {
         console.log(user)
         me.bindUser( user );
     },
-    bindUser: function ( user ) {
+    bindUser: function ( user, vk ) {
         var me = this;
         me.user = user;
-        me.application.fireEvent('userBinded', user);
+        me.getFilterForm().loadRecord(user);
+    },
+
+    loadGroups: function( facId ) {
+        this.getGroupsStore().load({
+            params: {
+                _facultet: facId
+            },
+            callback: function (data) {
+                console.log(data)
+            }
+        });
+    },
+    loadPrepods: function( univerId ) {
+        this.getPrepodsStore().load({
+            params: {
+                _univer: univerId
+            },
+            callback: function (data) {
+
+            }
+        });
+    },
+
+    onUniverChanged: function ( univer ) {
+        var me = this;
+        me.loadPrepods( univer.getId() );
+    },
+    onFacultetChanged: function (fac) {
+        var me = this;
+        me.loadGroups(fac.getId());
+    },
+    onKafChanged: function (kaf) {
+        var me = this;
+        if(!kaf) return;
+
+        me.getGroupsStore().filterBy( function(item) {
+            return item.get('chair') == kaf.getId();
+        });
+    },
+    onEndYearChanged: function (year) {
+        var me = this;
+        if(!year) return;
+
+        me.getGroupsStore().filterBy(function(item) {
+            return item.get('endYear') == year;
+        });
+    },
+    onGroupChanged: function (group) {
+        var me = this;
+
+
+        me.application.fireEvent('groupChanged', group);
     }
 });
