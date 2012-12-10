@@ -9,8 +9,7 @@ Ext.define('Sched.view.schedule.Week', {
         animate: false
     },
     defaults: {
-        xtype: 'day',
-        collapsed: true
+        xtype: 'day'
     },
 
     initComponent: function() {

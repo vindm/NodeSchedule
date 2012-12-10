@@ -203,16 +203,6 @@ app.get('/groups', function (req, res) {
         });
     });
 });
-app.get('/lessons', function (req, res) {
-    var groupId = req.query._group;
-    Lesson.find({_group: groupId}, function(err, lessons) {
-        res.contentType('json');
-        res.json({
-            success: true,
-            data: lessons
-        });
-    });
-});
 app.get('/prepods', function (req, res) {
     var univerId = req.query._univer;
     Prepod.find({_univer: univerId}, function(err, prepods) {
@@ -224,6 +214,16 @@ app.get('/prepods', function (req, res) {
     });
 });
 
+app.get('/lessons', function (req, res) {
+    var groupId = req.query._group;
+    Lesson.find({_group: groupId}, function(err, lessons) {
+        res.contentType('json');
+        res.json({
+            success: true,
+            data: lessons
+        });
+    });
+});
 app.put('/lessons/:id', function(req, res) {
     var lessonId = req.params.id,
         lessonBody = req.body;

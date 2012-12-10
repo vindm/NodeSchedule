@@ -12,6 +12,7 @@ Ext.define('Sched.controller.Schedule', {
         { selector: '#week #day-5', ref: 'd5' },
         { selector: '#week #day-6', ref: 'd6' }
     ],
+
     init: function () {
         var me = this;
         me.application.on({
@@ -25,13 +26,149 @@ Ext.define('Sched.controller.Schedule', {
             scope: me
         });
         me.control({
+            'week': {
+                render: me.makeWeekDroppable
+            },
             'day': {
-                itemclick: me.onLessonClick
+                itemclick: me.onLessonClick,
+                viewready: me.makeLessonsDraggable
             }
         });
     },
     onLaunch: function () {
         this.updateDays('all', 1);
+    },
+
+    makeWeekDroppable: function(v) {
+
+        var me = this,
+            panel = v,
+            week = me.getWeek(),
+
+            dragged, dragD,
+            dropped, dropD;
+
+        var moveAction = Ext.create('Ext.Action', {
+            text: 'Переместить',
+            disabled: true,
+            handler: function(widget, event) {
+                var upd = [dropD];
+
+                dragged.set('time', dropped.get('time'));
+
+                if ( dragD !== dropD ) {
+                    upd.push(dragD);
+                    dragged.set({
+                        day: dropD,
+                        dates: []
+                    });
+                }
+
+                me.saveScheduleLessons(upd, dragged);
+            }
+        });
+        var copyAction = Ext.create('Ext.Action', {
+            text: 'Копировать',
+            disabled: true,
+            handler: function(widget, event) {
+                var upd = [dropD],
+                    copy = dragged.copy().data;
+
+                delete copy['_id'];
+                me.getLessonsStore().add(copy);
+
+                dragged.set('time', dropped.get('time'));
+
+                if ( dragD !== dropD ) {
+                    upd.push(dragD);
+                    dragged.set({
+                        day: dropD,
+                        dates: []
+                    });
+                }
+                me.saveScheduleLessons(upd, dragged);
+            }
+        });
+        var replaceAction = Ext.create('Ext.Action', {
+            text: 'Поменять местами',
+            disabled: true,
+            handler: function(widget, event) {
+                var dragT = dragged.get('time'),
+                    upd = [dropD];
+
+                dragged.set( 'time', dropped.get('time') );
+                dropped.set( 'time', dragT );
+
+                if ( dragD !== dropD ) {
+                    upd.push(dragD);
+
+                    dragged.set({ day: dropD, dates: [] });
+                    dropped.set({ day: dragD, dates: [] });
+                }
+                me.saveScheduleLessons(upd, dragged);
+            }
+        });
+
+        var dropMenu = Ext.create('Ext.menu.Menu', {
+            items: [
+                moveAction,
+                copyAction,
+                replaceAction
+            ]
+        });
+
+        panel.dropZone = Ext.create('Ext.dd.DropZone', panel.getEl(), {
+
+            getTargetFromEvent: function(e) {
+                var col = e.getTarget('.x-panel-collapsed.x-grid');
+                if ( col ) {
+                    var day = week.child('#' + col.getAttribute('id'));
+                    day && day.expand();
+                }
+                return e.getTarget('.x-grid-row');
+            },
+
+            onNodeDrop : function(target, dd, e, data) {
+                var droppedDay = week.child( '#' + Ext.fly(target).up('.x-grid').id);
+
+                dragged = data.lessonRecord;
+                dragD = dragged.get('day');
+
+                dropped = droppedDay.getView().getRecord(target);
+                dropD = dropped.get('day');
+
+                moveAction.enable();
+                copyAction.enable();
+                dropped.get('blank') ? replaceAction.disable() : replaceAction.enable();
+
+                dropMenu.showAt(e.getXY());
+                return true;
+            }
+        });
+
+    },
+    makeLessonsDraggable: function(v) {
+
+        var gridView = v.getView();
+
+        gridView.dragZone = Ext.create('Ext.dd.DragZone', gridView.getEl(), {
+            getDragData: function(e) {
+                var sourceEl = e.getTarget(gridView.itemSelector, 10), d;
+                if (sourceEl) {
+                    d = sourceEl.cloneNode(true);
+                    d.id = Ext.id();
+                    return gridView.dragData = {
+                        ddel: d,
+                        sourceEl: sourceEl,
+                        repairXY: Ext.fly(sourceEl).getXY(),
+                        lessonRecord: gridView.getRecord(sourceEl)
+                    };
+                }
+            },
+            getRepairXY: function() {
+                return this.dragData.repairXY;
+            }
+        });
     },
 
     onGroupChanged: function ( group ) {
@@ -103,6 +240,8 @@ Ext.define('Sched.controller.Schedule', {
         dayStore.sort();
 
         select && me.changeSelection( select );
+
+        dayGrid.getView().setLoading(false);
     },
 
     changeSelection: function ( select ) {

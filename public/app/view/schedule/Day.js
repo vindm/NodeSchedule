@@ -5,6 +5,7 @@ Ext.define('Sched.view.schedule.Day', {
     config: {
         day:0
     },
+
     store: {
         model: 'Sched.model.Lesson',
         data: [],
