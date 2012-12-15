@@ -5,7 +5,8 @@ Ext.define('Sched.view.filter.Form', {
 
     bodyStyle: 'background: #F7F7F7;',
     width: 220,
-
+    collapsible: true,
+    collapseMode: 'mini',
     defaults: {
         xtype: 'fieldset',
         layout: 'anchor',
@@ -45,10 +46,12 @@ Ext.define('Sched.view.filter.Form', {
                 emptyText: 'Выбор университета',
                 store: 'Univers',
                 onChange: function(val) {
-                    console.log('univer', val);
-
                     var record = this.valueModels[0],
                         next = this.nextSibling();
+
+                    next.clearValue();
+
+                    this.up('groups').fireEvent('univerChanged', record);
 
                     if ( !record ) {
                         this.clearValue();
@@ -56,40 +59,36 @@ Ext.define('Sched.view.filter.Form', {
                     }
 
                     next.bindStore( record.facultets() );
-                    this.up('groups').fireEvent('univerChanged', record);
                 }
             }, {
                 id: 'facultetSelector',
                 name: 'faculty',
                 emptyText: 'Выбор факультета',
                 onChange: function(fac) {
-                    console.log('fac', fac)
-
                     var record = this.valueModels[0],
                         next = this.nextSibling();
+
+                    next.clearValue();
+
+                    this.up('groups').fireEvent('facultetChanged', record);
 
                     if ( !record ) {
                         this.clearValue();
                         return;
                     }
-
                     next.bindStore( record.kafedras() );
-                    this.up('groups').fireEvent('facultetChanged', record);
+
                 }
             }, {
                 id: 'kafedraSelector',
                 name: 'chair',
                 emptyText: 'Выбор кафедры',
                 onChange: function(kaf) {
-                    console.log('kaf', kaf)
-
                     var record = this.valueModels[0];
-                    if ( !record ) {
-                        this.clearValue();
-                        return;
-                    }
 
                     this.up('groups').fireEvent('kafedraChanged', record);
+
+                    if ( !record ) this.clearValue();
                 }
             }]
         },
@@ -116,6 +115,7 @@ Ext.define('Sched.view.filter.Form', {
                 id: 'gradSelector',
                 emptyText: 'Год выпуска',
                 name: 'graduation',
+                editable: false,
                 store: (function () {
                     var dt = new Date(), edf = Ext.Date.format,
                         curYear = edf(dt, 'Y'), curMonth = edf(dt, 'm'),
@@ -126,8 +126,6 @@ Ext.define('Sched.view.filter.Form', {
                     return years;
                 }()),
                 onChange: function(year) {
-                    console.log('grad', year)
-
                     if(year == 0) return;
                     this.up('groups').fireEvent('endYearChanged', year);
                 }
@@ -139,23 +137,32 @@ Ext.define('Sched.view.filter.Form', {
                 displayField: 'title',
                 valueField: '_id',
                 emptyText: 'Группа',
+                forceSelection: true,
                 onChange: function(group) {
-                    console.log('group', group);
+                    var me = this;
 
-                    var record = this.valueModels[0];
+                    if(!group) return;
+
+                    var record = me.valueModels[0];
                     if ( !record ) {
-                        this.clearValue();
+                        me.clearValue();
                         return;
                     }
 
-                    var form = this.up('groups'),
+                    var form = me.up('groups'),
                         rec = form.getForm().updateRecord().getRecord();
-                    form.fireEvent('groupChanged', record);
+
+                    form.fireEvent('groupChanged', record, false);
                     rec.save();
                 }
             }, {
                 xtype: 'button',
-                text: 'Добавить группу',
+                text: 'Создать группу',
+                id: 'addGroupBtn',
+                handler: function () {
+                    var form = this.up('groups');
+                    form.fireEvent('addGroup');
+                },
                 disabled: true
             }
         ]

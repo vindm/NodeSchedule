@@ -3,7 +3,7 @@ Ext.define('Sched.controller.Main', {
     models: [
         'User',
         'univer.Univer', 'univer.Facultet', 'univer.Kafedra',
-        'Group', 'Prepod', 'Schedule'
+        'Group', 'Admin', 'Prepod', 'Schedule'
     ],
     stores: [ "Univers", 'Groups', 'Prepods' ],
     views: [ 'filter.Form' ],
@@ -13,27 +13,39 @@ Ext.define('Sched.controller.Main', {
         { selector: '#filter #facultetSelector',    ref: 'facultetSelect' },
         { selector: '#filter #kafedraSelector',     ref: 'kafedraSelect' },
         { selector: '#filter #gradSelector',        ref: 'gradSelect' },
-        { selector: '#filter #groupSelector',       ref: 'groupSelect' }
+        { selector: '#filter #groupSelector',       ref: 'groupSelect' },
+        { selector: '#filter #addGroupBtn',         ref: 'addGroupBtn' },
     ],
 
     init: function () {
-        var me = this;
-         me.control({
+        var me = this,
+            vars = {};
+
+        VK.init(function () {
+            var parts = document.location.search.substr(1).split("&"), part = [], i = 0;
+            parts.forEach(function(part) { part = part.split('='); vars[part[0]] = part[1]; });
+
+            me.vars = vars;
+            me.fireEvent('vkInited', vars);
+        });
+
+        me.control({
             '#filter': {
-                'univerChanged':    me.onUniverChanged,
-                'facultetChanged':  me.onFacultetChanged,
-                'kafedraChanged':   me.onKafChanged,
-                'endYearChanged':   me.onEndYearChanged,
-                'groupChanged':     me.onGroupChanged
+                'univerChanged': me.onUniverChanged,
+                'facultetChanged': me.onFacultetChanged,
+                'kafedraChanged': me.onKafChanged,
+                'endYearChanged': me.onEndYearChanged,
+                'groupChanged': me.onGroupChanged,
+                'addGroup': me.onAddGroup
             }
         });
     },
 
     onLaunch: function () {
         var me = this;
+
         me.getUniversStore().load({
             callback: function(records) {
-                console.log('univers loaded', records);
                 me.getUser();
             }
         });
@@ -43,53 +55,47 @@ Ext.define('Sched.controller.Main', {
     getUser: function () {
         var me = this,
             model = me.getUserModel();
-        model.load(1, {
-            callback: function(record, operation) {
-                if ( !record ) {
-                    console.log('user not found')
-                    me.getFromVK();
-                } else {
-                    console.log('user found')
-                    console.log(record)
-                    me.bindUser( record );
-                }
-            },
-            scope: me
-        });
-    },
-    getFromVK: function () {
-        var me = this,
-            vars = {};
 
-        VK && VK.init(function () {
-            var parts = document.location.search.substr(1).split("&"),
-                part = [], i = 0;
+        model.load(1, { callback: function(record, operation) {
 
-            for ( i = 0; i < parts.length; i++ ) {
-                part = parts[i].split('=');
-                vars[part[0]] = part[1];
+            if ( record && me.getUniversStore().getById(record.get('univer')) ) {
+                console.log('get user from sessionSorage');
+                me.bindUser( record );
+                return;
             }
 
-            VK.api('users.get', {  uids: vars.user, fields: 'universities'  }, function (data) {
-                data = data.response[0];
+            console.log('get user from vk');
+            var fn = function(vars) {
+                me.getVkUser( [ vars.user ], function ( users ) { me.save( users[0] ); });
+            };
+            VK._inited && me.vars ? fn(me.vars) : me.on('vkInited', fn, me);
 
-                var store = me.getUniversStore(),
-                    user = {
-                        uid: data.uid,
-                        first_name: data.first_name,
-                        last_name: data.last_name
+        },  scope: me });
+    },
+    getVkUser: function ( ids, fn ) {
+        var me = this;
+
+        VK.api('users.get', {  uids: ids.join(','), fields: 'first_name, last_name, universities, photo'  }, function (data) {
+            var store = me.getUniversStore(),
+                appl = Ext.apply,
+                users = [];
+            console.log(ids, data)
+            users = data.response.map(function ( userData ) {
+                var user = {
+                        uid:        userData.uid,
+                        first_name: userData.first_name,
+                        last_name:  userData.last_name,
+                        photo:      userData.photo
                     },
-                    univer = false,
-                    appl = Ext.apply;
+                    univer = false;
 
-                data.universities.forEach(function (edu) {
+                userData.universities.forEach(function (edu) {
                     if ( edu.id !== 50 || edu.graduation < 2011 ) return;
                     univer = edu;
                 });
 
                 if ( !univer ) {
-                    me.save(user);
-                    return;
+                    return user;
                 }
 
                 var u = univer.id,
@@ -103,13 +109,16 @@ Ext.define('Sched.controller.Main', {
                 if ( u ) user['univer'] = u.getId();
                 if ( f ) user['faculty'] = f.getId();
                 if ( k ) user['chair'] = k.getId();
-                //user['graduation'] = univer.graduation;
+                user['graduation'] = univer.graduation;
 
-                me.save(user);
-
+                return user;
             });
+
+            fn && fn( users );
+
         });
     },
+
     save: function (user) {
         var me = this,
             model = me.getUserModel();
@@ -118,8 +127,7 @@ Ext.define('Sched.controller.Main', {
         user.setId(1);
         user.save();
 
-        console.log('user saved')
-        console.log(user)
+        console.log('user saved', user);
         me.bindUser( user );
     },
     bindUser: function ( user, vk ) {
@@ -128,10 +136,10 @@ Ext.define('Sched.controller.Main', {
         me.getFilterForm().loadRecord(user);
     },
 
-    loadGroups: function( facId ) {
+    loadGroups: function( id ) {
         this.getGroupsStore().load({
             params: {
-                _facultet: facId
+                _univer: id
             },
             callback: function (data) {
                 console.log(data)
@@ -151,32 +159,100 @@ Ext.define('Sched.controller.Main', {
 
     onUniverChanged: function ( univer ) {
         var me = this;
+
+        me.curUniver = univer;
+        if ( !univer ) return;
+
         me.loadPrepods( univer.getId() );
+        me.loadGroups( univer.getId() );
+
+        Ext.apply(Ext.form.field.VTypes, {
+            used: function(val, field) {
+                var store = me.getGroupsStore();
+
+                return store.queryBy(function(group) {
+                    return group.get('title') == val;
+                }).getCount() < 1;
+            },
+            usedText: 'В университете ' + univer.get('title') + ' уже существует группа с таким номером.'
+        });
     },
     onFacultetChanged: function (fac) {
         var me = this;
-        me.loadGroups(fac.getId());
+
+        me.curFac = fac;
+        if(!fac) return;
+
+        me.getGroupsStore().filterBy( function(item) {
+            return item.get('_facultet') == fac.getId();
+        });
     },
     onKafChanged: function (kaf) {
         var me = this;
+
+        me.getAddGroupBtn().disable();
+
+        me.curKaf = kaf;
         if(!kaf) return;
 
         me.getGroupsStore().filterBy( function(item) {
-            return item.get('chair') == kaf.getId();
+            return item.get('_kafedra') == kaf.getId();
         });
+
+        if ( me.curYear ) me.getAddGroupBtn().enable();
     },
+
     onEndYearChanged: function (year) {
         var me = this;
+
+        me.getAddGroupBtn().disable();
+
+        me.curYear = year;
         if(!year) return;
 
         me.getGroupsStore().filterBy(function(item) {
             return item.get('endYear') == year;
         });
+
+        if ( me.curKaf ) me.getAddGroupBtn().enable();
     },
-    onGroupChanged: function (group) {
+    onGroupChanged: function (group, isNew) {
         var me = this;
 
+        me.curGroup = group;
+        if(!group) return;
 
-        me.application.fireEvent('groupChanged', group);
+        group.admins().proxy.extraParams = {
+            '_group': group.getId()
+        };
+
+        isNew && group.admins().sync();
+        me.application.fireEvent('groupChanged', group, isNew);
+    },
+
+    onAddGroup: function () {
+        var me = this,
+            store = me.getGroupsStore(),
+            grmodel = me.getGroupModel(),
+            admodel = me.getAdminModel(),
+            admin = Ext.apply(me.user.data, {isMain: true}),
+            group = {
+                _univer: me.getUniverSelect().getValue(),
+                _facultet: me.getFacultetSelect().getValue(),
+                _kafedra: me.getKafedraSelect().getValue(),
+                endYear: me.getGradSelect().getValue(),
+                created: new Date()
+            },
+            groupModel = new grmodel(group);
+
+        store.add(groupModel);
+        store.sync({
+            success: function () {
+                var ad =  groupModel.admins();
+                delete admin['_id'];
+                ad.add(admin);
+                me.onGroupChanged(groupModel, true)
+            }
+        });
     }
 });

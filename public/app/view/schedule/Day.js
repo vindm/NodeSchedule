@@ -5,7 +5,6 @@ Ext.define('Sched.view.schedule.Day', {
     config: {
         day:0
     },
-
     store: {
         model: 'Sched.model.Lesson',
         data: [],
@@ -17,16 +16,14 @@ Ext.define('Sched.view.schedule.Day', {
             }
         }]
     },
-    defaults: {
-        flex: 1
-    },
     columns: [
         {
             text: 'Время',
             dataIndex: 'time'
         }, {
             text: 'Предмет',
-            dataIndex: 'title'
+            dataIndex: 'title',
+            flex: 1
         }, {
             text: 'Занятие',
             dataIndex: 'typ',
@@ -41,6 +38,7 @@ Ext.define('Sched.view.schedule.Day', {
         }, {
             text: 'Преподователь',
             dataIndex: 'prepod',
+            flex: 1,
             renderer: function( val, rec, r ) {
                 return r.getPrepodName();
             }

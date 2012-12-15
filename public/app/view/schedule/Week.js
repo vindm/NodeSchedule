@@ -2,10 +2,20 @@ Ext.define('Sched.view.schedule.Week', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.week',
     id: 'week',
+    tbar: [
+        { xtype: 'tbtext', id: 'group_name', text: 'Группа не выбрана' },
+        { xtype: 'tbseparator' },
+        { xtype: 'button', text: 'Редактирование', handler: function() {
+            this.up('week').fireEvent('edit');
+        }},
+        '->',
+        { xtype: 'button', text: 'Настройки группы', handler: function() {
+            this.up('week').fireEvent('showGroupInfo');
+        }}
+    ],
     layout: {
         type: 'accordion',
         fill: false,
-        flex: 1,
         animate: false
     },
     defaults: {

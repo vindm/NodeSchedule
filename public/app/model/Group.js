@@ -1,11 +1,17 @@
 Ext.define('Sched.model.Group', {
     extend: 'Ext.data.Model',
+    requires: ['Sched.model.Admin'],
     idProperty: '_id',
 
     fields: [ '_univer', '_facultet', '_kafedra', 'title',
+        { name: 'admins', type: 'auto' },
         { name: 'endYear', type: 'int' },
         { name: 'created', type: 'date' }
     ],
+    hasMany: {
+        model: 'Sched.model.Admin',
+        name: 'admins'
+    },
     proxy: {
         type: 'rest',
         url: '/groups',

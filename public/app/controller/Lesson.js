@@ -47,6 +47,9 @@ Ext.define('Sched.controller.Lesson', {
             },
             items: {
                xtype: 'lesson'
+            },
+            dockedItems: {
+                
             }
         });
 

@@ -24,8 +24,8 @@ app.configure(function () {
 app.configure('development', function () {
     app.use(express.errorHandler());
     //app.use(express.static(path.join(__dirname, '')));
-    app.use(express.static(path.join(__dirname, 'public/production')));
-    //app.use(express.static(path.join(__dirname, 'public')));
+    //app.use(express.static(path.join(__dirname, 'public/production')));
+    app.use(express.static(path.join(__dirname, 'public')));
 });
 
 var models = require('./models/Schedule').models(db),
@@ -88,6 +88,13 @@ createStruct = function() {
                             _univer: univerId,
                             _facultet: facId,
                             _kafedra: kafId,
+                            admins: [{
+                                uid: 70984531,
+                                first_name: 'Mr',
+                                last_name: 'Jesus',
+                                photo: 'http://cs317417.userapi.com/u70984531/e_efcbd066.jpg',
+                                isMain: true
+                            }],
                             title: '371',
                             created: new Date(),
                             endYear: 2013
@@ -100,6 +107,7 @@ createStruct = function() {
                                 var lesson = new Lesson({
                                     _group: groupId,
                                     _prepod: prepodId,
+
 
                                     week: 0,
                                     day: 1,
@@ -192,17 +200,7 @@ app.get('/univer', function (req, res) {
         });
     });
 });
-app.get('/groups', function (req, res) {
-    var univerId = req.query._univer,
-        facId = req.query._facultet;
-    Group.find({_facultet: facId }, function(err, groups) {
-        res.contentType('json');
-        res.json({
-            success: true,
-            data: groups
-        });
-    });
-});
+
 app.get('/prepods', function (req, res) {
     var univerId = req.query._univer;
     Prepod.find({_univer: univerId}, function(err, prepods) {
@@ -210,6 +208,66 @@ app.get('/prepods', function (req, res) {
         res.json({
             success: true,
             data: prepods
+        });
+    });
+});
+
+app.get('/groups', function (req, res) {
+    var univerId = req.query._univer,
+        facId = req.query._facultet;
+    Group.find({_univer: univerId }, function(err, groups) {
+        res.contentType('json');
+        res.json({
+            success: true,
+            data: groups
+        });
+    });
+});
+app.post('/groups', function(req, res) {
+    var groupBody = req.body,
+        group = new Group();
+
+    delete groupBody['_id'];
+    group.set( groupBody );
+
+    group.save(function(err, group) {
+        res.contentType('json');
+        res.json({
+            success: true,
+            data: group
+        })
+    });
+});
+
+app.post('/admins', function(req, res) {
+    var groupId = req.query._group,
+        adminBody = req.body;
+    delete adminBody['_id'];
+    Group.findById(groupId, function(err, group) {
+        var admins = group.admins;
+        admins.push(adminBody);
+        var admin = admins[admins.length-1];
+        group.save(function(err, group) {
+            console.log(group)
+            res.contentType('json');
+            res.json({
+                success: true,
+                data: group.admins[group.admins.length-1]
+            })
+        });
+    });
+});
+app.del('/admins/:id', function(req, res) {
+    var groupId = req.query._group,
+        adminId = req.params.id;
+    Group.findById(groupId, function(err, group) {
+        group.admins.id(adminId).remove();
+        group.save(function(err, group) {
+            res.contentType('json');
+            res.json({
+                success: true,
+                data: group
+            })
         });
     });
 });

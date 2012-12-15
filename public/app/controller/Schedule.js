@@ -27,7 +27,8 @@ Ext.define('Sched.controller.Schedule', {
         });
         me.control({
             'week': {
-                render: me.makeWeekDroppable
+                render: me.makeWeekDroppable,
+                showGroupInfo: me.showGroupInfo
             },
             'day': {
                 itemclick: me.onLessonClick,
@@ -37,6 +38,12 @@ Ext.define('Sched.controller.Schedule', {
     },
     onLaunch: function () {
         this.updateDays('all', 1);
+    },
+
+    showGroupInfo: function () {
+        var me = this;
+        console.log('from btn')
+        me.application.fireEvent('editGroup')
     },
 
     makeWeekDroppable: function(v) {
@@ -184,6 +191,7 @@ Ext.define('Sched.controller.Schedule', {
             callback: this.onLessonsLoaded,
             scope: me
         });
+        me.getWeek().down('#group_name').setText( 'Расписание группы ' + group.get('title') );
     },
     onLessonsLoaded: function ( data ) {
         var me = this;

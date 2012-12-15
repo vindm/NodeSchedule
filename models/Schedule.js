@@ -25,14 +25,17 @@ mongoose.model('Univer', UniverSchema);
 // ----------- Group Model ------------
 
 var AdminSchema = new Schema({
-        title: String,
-        vk: Number,
-        author: Boolean
+        first_name: String,
+        last_name: String,
+        uid: Number,
+        isMain: Boolean,
+        photo: String
     }),
     GroupSchema = new Schema({
         _univer: { type: Schema.Types.ObjectId, ref: 'Univer' },
         _facultet: { type: Schema.Types.ObjectId },
         _kafedra: { type: Schema.Types.ObjectId },
+        admins: [AdminSchema],
         title: String,
         endYear: Number,
         created: { type: Date, default: Date.now }

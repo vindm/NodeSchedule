@@ -2,11 +2,11 @@ Ext.application({
     name: 'Sched',
     models: [
         'univer.Univer', 'univer.Facultet', 'univer.Kafedra',
-        'Schedule', 'Group', 'Prepod', 'Lesson'
+        'Schedule', 'Group', 'Admin', 'Prepod', 'Lesson'
     ],
     stores: ['Univers', 'Groups', 'Prepods', 'Lessons'],
     //requires: ['Sched.view.extended.Combo'],
-    controllers: ['Main', 'Schedule', 'Lesson'],
+    controllers: ['Main', 'Group', 'Schedule', 'Lesson'],
 
     autoCreateViewport: true
 });
